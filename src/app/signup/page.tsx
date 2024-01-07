@@ -1,8 +1,8 @@
-import Loginform from "./component/Loginform"
+import Signupform from "./component/Signupform"
 export default function Page() {
   return (
     <div className="w-screen h-screen flex justify-center items-center">
-      <Loginform />
+      <Signupform />
     </div>
   )
 }
