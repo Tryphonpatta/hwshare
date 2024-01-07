@@ -1,12 +1,19 @@
 "use client"
 import Link from 'next/link'
 import { useState } from "react";
+import { signIn } from 'next-auth/react';
 export default function Loginform() {
 	const [username, setUsername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const  handlesumbit = (e: React.FormEvent<HTMLFormElement>) => {
+	const  handlesumbit = async(e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		console.log("submit");
+		const res = await signIn("credentials",{username : username,password : password,redirect: false,});
+		if(res?.error){
+			console.log(res.error);
+			return res.error;
+		}
+		return res;
 	}
 	return (
 		<div className="w-[400px] border p-5 rounded-md">
@@ -15,7 +22,7 @@ export default function Loginform() {
 				<input type="text" placeholder="username" className="input input-bordered" value={username} onChange={(e) => setUsername(e.target.value)}/>
 				<input type="password" placeholder="password" className="input  input-bordered" value={password} onChange={(e) => setPassword(e.target.value)}/>
 				<button className="btn btn-active btn-primary" type="submit">Sign In</button>
-				<Link href="/signup">Doesnt has an account go <span className='underline'>sign up</span></Link>
+				<Link href="/signup">Doesn't has an account go <span className='underline'>sign up</span></Link>
 			</form>
 		</div>
 	)
