@@ -9,9 +9,14 @@ export default function Signupform() {
 	const checkerror = () => {
 		if(!name || !username || !password || !cpassword) return (<p className=" bg-red-700 rounded-lg w-fit px-2">Please fill all of above.</p>);
 		if(password !== cpassword) return (<p className=" bg-red-700 rounded-lg w-fit px-2">Passwords are not same.</p>);
+        return null;
 	}
 	const  handlesumbit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+        if(checkerror() != null){
+            alert("can't sign up");
+            return;
+        }
 		try {
 			axios.post("/api/register",{name,username,password});
 		}

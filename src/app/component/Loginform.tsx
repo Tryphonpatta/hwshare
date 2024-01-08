@@ -2,9 +2,11 @@
 import Link from 'next/link'
 import { useState } from "react";
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 export default function Loginform() {
 	const [username, setUsername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
+    const router = useRouter();
 	const  handlesumbit = async(e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		console.log("submit");
@@ -13,6 +15,12 @@ export default function Loginform() {
 			console.log(res.error);
 			return res.error;
 		}
+        try{
+        router.push("/course");
+        }
+        catch (e){
+            console.log(e);
+        }
 		return res;
 	}
 	return (
