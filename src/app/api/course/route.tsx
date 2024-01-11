@@ -9,5 +9,15 @@ export async function POST(req:any) {
 	await course.create({coursename,courseId});
 	return Response.json({
 		text : "hello world"
-	})
+	});
+}
+
+export async function GET() {
+    console.log('GET');
+    await connectDB();
+    const c = await course.find({});
+    console.log(c);
+    return Response.json({
+		text : "hello world"
+	});
 }
