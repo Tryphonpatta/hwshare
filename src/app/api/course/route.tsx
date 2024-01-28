@@ -18,6 +18,6 @@ export async function GET() {
     const c = await course.find({});
     console.log(c);
     return Response.json({
-		text : "hello world"
+		course : c
 	});
 }
