@@ -2,7 +2,7 @@ import NextAuth,{NextAuthOptions} from "next-auth";
 import CredentialsProvider  from "next-auth/providers/credentials";
 import { connectDB } from "../../../../../lib/mongodb";
 import user from "../../../../../models/user";
-export const authOptions : NextAuthOptions = {
+const authOptions : NextAuthOptions = {
 	session: {
 		strategy: "jwt",
 	},
@@ -45,4 +45,4 @@ export const authOptions : NextAuthOptions = {
 
 
 const handler = NextAuth(authOptions);
-export {handler as GET,handler as POST}
+export {handler as GET,handler as POST,authOptions}
