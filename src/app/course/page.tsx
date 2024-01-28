@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { useSession } from "next-auth/react"
 import { signOut } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
-import {authOptions} from "../api/auth/[...nextauth]/option";
+import authOptions from "../api/auth/[...nextauth]/option";
 import Addcourse from "./component/newcourse";
 import { use, useEffect,useState } from "react";
 import course from "../../../models/course";

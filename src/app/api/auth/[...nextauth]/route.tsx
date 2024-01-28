@@ -1,4 +1,4 @@
-import { authOptions } from "./option";
+import authOptions  from "./option";
 import NextAuth from 'next-auth';
 
 
