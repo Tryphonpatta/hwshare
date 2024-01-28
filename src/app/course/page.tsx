@@ -36,7 +36,7 @@ export default function Coursepage() {
             <button className="btn btn-error" onClick={handlelogout}>log out </button>
             <Addcourse/>
             {
-                courses.map((course) => {
+                courses.map((course,index) => {
                     return (
                         <div className="flex my-2">
                         <div key={course.courseId} className="flex justify-between w-[400px] h-[30px] border px-2 cursor-pointer" onClick={() => {
